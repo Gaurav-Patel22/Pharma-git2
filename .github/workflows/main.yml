@@ -3,7 +3,7 @@ name: Pharma-git2
 on: 
    push:
           branches: 
-          -main
+          -master
           
 jobs:
     build-and-deploy:
