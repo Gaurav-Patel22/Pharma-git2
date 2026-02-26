@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Pharmacy Cart</div>
+        <ul class="nav-links">
+            <li><a href="index.html">⬅ Back to Store</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="cart-page">
+    <h2>Your Cart Items</h2>
+
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th>Medicine</th>
+                <th>Price (₹)</th>
+                <th>Quantity</th>
+                <th>Total (₹)</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+            <!-- Items will load here -->
+        </tbody>
+    </table>
+
+    <h3 id="grand-total"></h3>
+</section>
+
+<script src="cart.js"></script>
+</body>
+</html>
