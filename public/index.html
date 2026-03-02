@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Pharma CloudOps </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header class="header">
+    <nav class="navbar">
+        <div class="logo"> Pharma CloudOps </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Services</a></li>
+            <li><a href="#medicines">Medicines</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+
+        <!-- AUTH BUTTONS -->
+        <div class="nav-actions" id="auth-buttons">
+            <button class="login-btn" onclick="openSignup()">Signup</button>
+            <button class="login-btn" onclick="openLogin()">Login</button>
+            <div class="cart" onclick="openCartPage()">
+                🛒 <span id="cart-count">0</span>
+            </div>
+        </div>
+
+        <!-- USER INFO -->
+        <div class="nav-actions" id="user-info" style="display:none;">
+            <span id="username"></span>
+            <button class="login-btn" onclick="logout()">Logout</button>
+            <div class="cart" onclick="openCartPage()">
+                🛒 <span id="cart-count-user">0</span>
+            </div>
+        </div>
+
+    </nav>
+</header>
+
+<!-- ========== HERO ========== -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Online Pharmacy Store</h1>
+        <p>Buy medicines safely and easily from trusted sources</p>
+        <button class="primary-btn" id="hero-auth-btn" onclick="openSignup()">
+            Get Started
+        </button>
+
+    </div>
+</section>
+
+<!-- ========== SERVICES ========== -->
+<section id="features" class="features">
+    <h2 class="section-title">Our Services</h2>
+
+    <div class="feature-grid">
+        <div class="feature-card">Medicine Inventory</div>
+        <div class="feature-card">Prescription Management</div>
+        <div class="feature-card">Billing & Reports</div>
+        <div class="feature-card">Secure System</div>
+    </div>
+</section>
+
+<!-- ========== MEDICINES ========== -->
+<section id="medicines" class="medicines">
+    <h2 class="section-title">Available Medicines</h2>
+
+    <div class="medicine-grid">
+
+        <div class="medicine-card">
+            <img src="images/paracetamol.jpg">
+            <h3>Paracetamol</h3>
+            <p class="category">Tablet</p>
+            <p class="price">₹25</p>
+            <button onclick="addToCart('Paracetamol',25)">Add to Cart</button>
+        </div>
+
+        <div class="medicine-card">
+            <img src="images/azithromycin.jpg">
+            <h3>Azithromycin</h3>
+            <p class="category">Tablet</p>
+            <p class="price">₹120</p>
+            <button onclick="addToCart('Azithromycin',120)">Add to Cart</button>
+        </div>
+
+        <div class="medicine-card">
+            <img src="images/Cough Syrup.jpg">
+            <h3>Cough Syrup</h3>
+            <p class="category">Syrup</p>
+            <p class="price">₹90</p>
+            <button onclick="addToCart('Cough Syrup',90)">Add to Cart</button>
+        </div>
+
+        <div class="medicine-card">
+            <img src="images/vitamin C Tablets.jpg">
+            <h3>Vitamin C Tablets</h3>
+            <p class="category">Tablet</p>
+            <p class="price">₹60</p>
+            <button onclick="addToCart('Vitamin C Tablets',60)">Add to Cart</button>
+        </div>
+
+        <div class="medicine-card">
+            <img src="images/Insulin Injection.jpg">
+            <h3>Insulin Injection</h3>
+            <p class="category">Injection</p>
+            <p class="price">₹350</p>
+            <button onclick="addToCart('Insulin Injection',350)">Add to Cart</button>
+        </div>
+
+        <div class="medicine-card">
+            <img src="images/allegra.AVIF">
+            <h3>Allegra</h3>
+            <p class="category">Tablet</p>
+            <p class="price">₹499</p>
+            <button onclick="addToCart('Allegra',499)">Add to Cart</button>
+        </div>
+
+        <div class="medicine-card">
+            <img src="images/Dupixent.AVIF">
+            <h3>Dupixent</h3>
+            <p class="category">Injection</p>
+            <p class="price">₹650</p>
+            <button onclick="addToCart('Dupixent',650)">Add to Cart</button>
+        </div>
+
+        <div class="medicine-card">
+            <img src="images/Farxiga.jpg">
+            <h3>Farxiga</h3>
+            <p class="category">Tablet</p>
+            <p class="price">₹300</p>
+            <button onclick="addToCart('Farxiga',300)">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="about">
+    <h2 class="section-title">About Us</h2>
+    <p>
+        Pharma CloudOps is a modern pharmacy management platform designed
+        to automate inventory, prescriptions, billing, and secure medicine access.
+    </p>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <p>© 2026 Pharma CloudOps. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
