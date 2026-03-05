@@ -62,7 +62,7 @@ project-folder
 ## How to Run the Project
 
 ### Step 1: Clone the Repository
-git clone 
+git clone https://github.com/Gaurav-Patel22/Pharma-git2.git
 
 ### Step 2: Go to Project Folder
 cd your-repository-name
