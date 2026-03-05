@@ -105,7 +105,7 @@ Whenever code is pushed to GitHub:
 
 ## Author
 
-Gaurav Patel 
+Gaurav-Patel22 
 
 
 ## License
