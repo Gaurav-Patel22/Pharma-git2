@@ -1,286 +1,775 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Segoe UI", Arial, sans-serif;
+/* ============================================================
+   PHARMA CLOUDOPS — Complete Redesign
+   Drop-in replacement for style.css (zero logic changes)
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+/* ── CSS Variables ─────────────────────────────────────────── */
+:root {
+  --teal:        #0d9e86;
+  --teal-dark:   #097a67;
+  --teal-light:  #e0f5f1;
+  --teal-glow:   rgba(13,158,134,0.18);
+  --cream:       #f7faf9;
+  --white:       #ffffff;
+  --text-dark:   #0f1f1c;
+  --text-mid:    #3d5a55;
+  --text-soft:   #7a9e99;
+  --border:      #d6eeea;
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.07);
+  --shadow-md:   0 8px 28px rgba(13,158,134,0.13);
+  --shadow-lg:   0 20px 60px rgba(13,158,134,0.18);
+  --radius:      14px;
+  --radius-sm:   8px;
+  --font-body:   'DM Sans', sans-serif;
+  --font-display:'Playfair Display', serif;
+  --transition:  0.3s cubic-bezier(0.4,0,0.2,1);
 }
+
+/* ── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
 
 body {
-    background: #f4f9f8;
-    color: #222;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--text-dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* NAVBAR */
+/* ── Scrollbar ───────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 3px; }
+
+/* ======================================================
+   NAVBAR
+   ====================================================== */
 .header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #0a8f7a;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar {
-    max-width: 1200px;
-    margin: auto;
-    padding: 15px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1240px;
+  margin: auto;
+  padding: 0 28px;
+  height: 68px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
 }
 
 .logo {
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--teal);
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  background: linear-gradient(135deg, var(--teal) 0%, #0fc2a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 25px;
+  list-style: none;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
+  color: var(--text-mid);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14.5px;
+  padding: 7px 14px;
+  border-radius: 100px;
+  transition: var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.nav-links a:hover {
+  color: var(--teal);
+  background: var(--teal-light);
 }
 
 .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Username text in nav */
+#username {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-mid);
+  padding: 0 6px;
 }
 
 .login-btn {
-    background: white;
-    color: #0a8f7a;
-    border: none;
-    padding: 7px 14px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  padding: 8px 18px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13.5px;
+  font-family: var(--font-body);
+  transition: var(--transition);
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 10px rgba(13,158,134,0.25);
 }
+
+.login-btn:hover {
+  background: var(--teal-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(13,158,134,0.35);
+}
+
+.login-btn:active { transform: translateY(0); }
 
 .cart {
-    color: white;
-    cursor: pointer;
+  cursor: pointer;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 7px 12px;
+  border-radius: 100px;
+  transition: var(--transition);
+  border: 1.5px solid var(--border);
+  color: var(--text-dark);
 }
 
-#cart-count {
-    background: red;
-    padding: 2px 6px;
-    border-radius: 50%;
-    font-size: 12px;
+.cart:hover {
+  background: var(--teal-light);
+  border-color: var(--teal);
 }
 
-/* HERO */
+#cart-count,
+#cart-count-user {
+  background: var(--teal);
+  color: white;
+  padding: 2px 7px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  min-width: 20px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ======================================================
+   HERO
+   ====================================================== */
 .hero {
-    background: linear-gradient(to right, #0a8f7a, #0fc2a1);
-    color: white;
-    padding: 90px 20px;
-    text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #07796a 0%, #0d9e86 45%, #0fc9a6 100%);
+  color: white;
+  padding: 100px 20px 110px;
+  text-align: center;
+}
+
+/* Decorative background shapes */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  left: -60px;
+  width: 350px;
+  height: 350px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: auto;
 }
 
 .hero-content h1 {
-    font-size: 38px;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.15);
 }
 
 .hero-content p {
-    margin: 15px 0;
+  font-size: 18px;
+  font-weight: 400;
+  opacity: 0.92;
+  margin-bottom: 36px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .primary-btn {
-    background: white;
-    color: #0a8f7a;
-    padding: 12px 25px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    border-radius: 4px;
+  background: white;
+  color: var(--teal);
+  padding: 14px 36px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  border-radius: 100px;
+  transition: var(--transition);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  letter-spacing: 0.02em;
 }
 
-/* SECTIONS */
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
+.primary-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0,0,0,0.2);
+  background: #f0faf8;
 }
 
+/* ======================================================
+   SHARED SECTION STYLES
+   ====================================================== */
 .features, .medicines, .about {
-    padding: 70px 20px;
+  padding: 80px 24px;
 }
 
-/* FEATURES */
+.section-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 50px;
+  letter-spacing: -0.5px;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--teal);
+  margin: 14px auto 0;
+  border-radius: 2px;
+}
+
+/* ======================================================
+   FEATURES / SERVICES
+   ====================================================== */
+.features {
+  background: white;
+}
+
 .feature-grid {
-    max-width: 1000px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-    gap: 20px;
+  max-width: 1080px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 22px;
 }
 
 .feature-card {
-    background: white;
-    padding: 25px;
-    text-align: center;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  background: var(--cream);
+  padding: 32px 24px;
+  text-align: center;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+  font-weight: 600;
+  font-size: 15.5px;
+  color: var(--text-mid);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
 }
 
-/* MEDICINES */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--teal), #0fc2a1);
+  transform: scaleX(0);
+  transition: var(--transition);
+  transform-origin: left;
+}
+
+.feature-card:hover {
+  border-color: var(--teal);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  color: var(--teal);
+}
+
+.feature-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Feature icons via content before text */
+.feature-card:nth-child(1)::after { content: '💊'; display:block; font-size:32px; margin-bottom:12px; }
+.feature-card:nth-child(2)::after { content: '📋'; display:block; font-size:32px; margin-bottom:12px; }
+.feature-card:nth-child(3)::after { content: '🧾'; display:block; font-size:32px; margin-bottom:12px; }
+.feature-card:nth-child(4)::after { content: '🔒'; display:block; font-size:32px; margin-bottom:12px; }
+
+.feature-card { display: flex; flex-direction: column-reverse; align-items: center; justify-content: center; }
+
+/* ======================================================
+   MEDICINES
+   ====================================================== */
+.medicines {
+  background: var(--cream);
+}
+
 .medicine-grid {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
-    gap: 25px;
+  max-width: 1240px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
 }
 
 .medicine-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s;
+  background: white;
+  padding: 0;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1.5px solid var(--border);
+  text-align: center;
+  transition: var(--transition);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .medicine-card:hover {
-    transform: translateY(-8px);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--teal);
 }
 
 .medicine-card img {
-    width: 100%;
-    height: 160px;
-    object-fit: contain;
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+  background: var(--teal-light);
+  padding: 16px;
+  transition: var(--transition);
+}
+
+.medicine-card:hover img {
+  transform: scale(1.04);
+}
+
+.medicine-card h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 14px 16px 4px;
+  letter-spacing: -0.2px;
+}
+
+.medicine-card .category {
+  font-size: 12.5px;
+  color: var(--text-soft);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 16px 8px;
 }
 
 .price {
-    font-weight: bold;
-    margin: 10px 0;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--teal);
+  margin: 4px 16px 14px;
+  letter-spacing: -0.3px;
 }
 
 .medicine-card button {
-    background: #0a8f7a;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 4px;
+  background: var(--teal);
+  color: white;
+  border: none;
+  padding: 13px;
+  width: 100%;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 0;
+  transition: var(--transition);
+  letter-spacing: 0.02em;
+  margin-top: auto;
 }
 
-/* ABOUT */
+.medicine-card button:hover {
+  background: var(--teal-dark);
+}
+
+.medicine-card button:active {
+  background: #065e4f;
+}
+
+/* ======================================================
+   ABOUT
+   ====================================================== */
+.about {
+  background: white;
+  text-align: center;
+}
+
 .about p {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
-    line-height: 1.6;
+  max-width: 680px;
+  margin: auto;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-mid);
 }
 
-/* FOOTER */
+/* ======================================================
+   FOOTER
+   ====================================================== */
 .footer {
-    background: #0a8f7a;
-    color: white;
-    text-align: center;
-    padding: 15px;
+  background: var(--text-dark);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 22px 20px;
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
 }
 
-/* ================= AUTH PAGES (LOGIN & SIGNUP) ================= */
-
+/* ======================================================
+   AUTH PAGES — Login & Signup
+   ====================================================== */
 .auth-container {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(to right, #0a8f7a, #0fc2a1);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #07796a 0%, #0d9e86 50%, #0fc9a6 100%);
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background texture circles */
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 450px; height: 450px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.auth-container::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 380px; height: 380px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .auth-card {
-    background: white;
-    padding: 35px;
-    width: 100%;
-    max-width: 380px;
-    border-radius: 10px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    text-align: center;
+  background: white;
+  padding: 44px 40px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.2);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: cardIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .auth-card h2 {
-    margin-bottom: 20px;
-    color: #0a8f7a;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 28px;
+  letter-spacing: -0.5px;
+}
+
+.auth-card h2::before {
+  content: '✚ ';
+  color: var(--teal);
+  font-family: var(--font-body);
+  font-size: 20px;
 }
 
 .auth-card input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
+  width: 100%;
+  padding: 13px 16px;
+  margin-bottom: 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border);
+  font-size: 15px;
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: var(--cream);
+  transition: var(--transition);
+  outline: none;
+}
+
+.auth-card input:focus {
+  border-color: var(--teal);
+  background: white;
+  box-shadow: 0 0 0 3px var(--teal-glow);
+}
+
+.auth-card input::placeholder {
+  color: var(--text-soft);
 }
 
 .auth-card button {
-    width: 100%;
-    background: #0a8f7a;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+  width: 100%;
+  background: linear-gradient(135deg, var(--teal) 0%, #0fc2a1 100%);
+  color: white;
+  border: none;
+  padding: 13px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 15px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.03em;
+  box-shadow: 0 4px 16px rgba(13,158,134,0.3);
+  margin-top: 4px;
 }
 
 .auth-card button:hover {
-    background: #087a67;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(13,158,134,0.4);
+  background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 100%);
 }
 
+.auth-card button:active { transform: translateY(0); }
+
 .auth-card p {
-    margin-top: 15px;
-    font-size: 14px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--text-soft);
+}
+
+#msg {
+  font-size: 13.5px;
+  padding: 4px 0;
+  min-height: 20px;
+  font-weight: 500;
 }
 
 .auth-card a {
-    color: #0a8f7a;
-    text-decoration: none;
-    font-weight: bold;
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 700;
+  transition: var(--transition);
 }
 
-/* ================= CART PAGE ================= */
+.auth-card a:hover {
+  color: var(--teal-dark);
+  text-decoration: underline;
+}
+
+/* ======================================================
+   CART PAGE
+   ====================================================== */
+
+/* Cart page uses a header without .header wrapper */
+header {
+  background: white;
+  border-bottom: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header .navbar {
+  max-width: 1240px;
+  margin: auto;
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--teal) 0%, #0fc2a1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+header .nav-links { list-style: none; }
+header .nav-links a {
+  color: var(--teal);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 8px 16px;
+  border-radius: 100px;
+  border: 1.5px solid var(--teal);
+  transition: var(--transition);
+  display: inline-block;
+}
+
+header .nav-links a:hover {
+  background: var(--teal);
+  color: white;
+}
 
 .cart-page {
-    max-width: 900px;
-    margin: 40px auto;
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  max-width: 960px;
+  margin: 48px auto;
+  background: white;
+  padding: 36px 40px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  border: 1.5px solid var(--border);
+  animation: cardIn 0.4s ease both;
 }
 
 .cart-page h2 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 28px;
+  letter-spacing: -0.5px;
 }
 
 .cart-table {
-    width: 100%;
-    border-collapse: collapse;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1.5px solid var(--border);
 }
 
 .cart-table th,
 .cart-table td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
+  padding: 14px 18px;
+  text-align: center;
 }
 
 .cart-table th {
-    background: #0a8f7a;
-    color: white;
+  background: linear-gradient(135deg, var(--teal) 0%, #0fc2a1 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 13.5px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cart-table td {
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text-mid);
+  font-weight: 500;
+}
+
+.cart-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.cart-table tbody tr {
+  transition: background var(--transition);
+}
+
+.cart-table tbody tr:hover {
+  background: var(--teal-light);
 }
 
 #grand-total {
-    text-align: right;
-    margin-top: 20px;
-    font-size: 18px;
-    font-weight: bold;
+  text-align: right;
+  margin-top: 24px;
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text-dark);
+  padding-top: 18px;
+  border-top: 2px solid var(--border);
+}
+
+/* ======================================================
+   UTILITY — Responsive
+   ====================================================== */
+@media (max-width: 768px) {
+  .navbar { flex-wrap: wrap; height: auto; padding: 14px 18px; gap: 12px; }
+  .nav-links { display: none; } /* mobile: hidden (existing behavior) */
+  .hero { padding: 70px 18px 80px; }
+  .features, .medicines, .about { padding: 56px 16px; }
+  .cart-page { margin: 24px 16px; padding: 24px 20px; }
+  .auth-card { padding: 32px 24px; }
+  .medicine-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+}
+
+/* ======================================================
+   MICRO-ANIMATIONS
+   ====================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-content {
+  animation: fadeUp 0.7s ease both;
+}
+
+.section-title {
+  animation: fadeUp 0.5s ease both;
 }
