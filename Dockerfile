@@ -1,4 +1,11 @@
-FROM nginx:latest
-COPY public/ /usr/share/nginx/html/
+FROM node:18
+
+WORKDIR /app
+
 COPY . .
-EXPOSE 80
+
+RUN npm install
+
+EXPOSE 3000
+
+CMD ["node", "server/server.js"]
