@@ -1,12 +1,9 @@
 FROM nginx:latest
 
-# Remove default nginx files
+# Remove default nginx site
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy only website files (not project folder)
-COPY . /usr/share/nginx/html/
-
-# Fix file permissions
-RUN chmod -R 755 /usr/share/nginx/html
+# Copy only public folder to nginx
+COPY public /usr/share/nginx/html
 
 EXPOSE 80
