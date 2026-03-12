@@ -1,12 +1,9 @@
 FROM nginx:latest
 
-WORKDIR /usr/share/nginx/html
+# Remove default nginx website
+RUN rm -rf /usr/share/nginx/html/*
 
-RUN rm -rf ./*
-
-COPY index.html .
-COPY style.css .
-COPY script.js .
-COPY images ./images
+# Copy complete project
+COPY . /usr/share/nginx/html
 
 EXPOSE 80
