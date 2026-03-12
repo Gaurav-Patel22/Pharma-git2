@@ -1,9 +1,12 @@
 FROM nginx:latest
 
-# Remove default nginx files
-RUN rm -rf /usr/share/nginx/html/*
+WORKDIR /usr/share/nginx/html
 
-# Copy entire project to nginx folder
-COPY . /usr/share/nginx/html/
+RUN rm -rf ./*
+
+COPY index.html .
+COPY style.css .
+COPY script.js .
+COPY images ./images
 
 EXPOSE 80
