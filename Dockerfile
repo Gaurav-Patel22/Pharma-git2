@@ -1,9 +1,19 @@
-FROM nginx:latest
+FROM node:18
 
-# Remove default nginx site
-RUN rm -rf /usr/share/nginx/html/*
+# Create app folder
+WORKDIR /app
 
-# Copy only public folder to nginx
-COPY ./public . /usr/share/nginx/html/
+# Copy package files
+COPY package*.json ./
 
-EXPOSE 80
+# Install dependencies
+RUN npm install
+
+# Copy project files
+COPY . .
+
+# Expose server port
+EXPOSE 3000
+
+# Start server
+CMD ["node", "server.js"]
