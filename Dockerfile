@@ -5,7 +5,7 @@ WORKDIR /app
 
 # Copy package files
 COPY ./server/package*.json ./
-COPY ./public . /usr/share/nginx/html/
+COPY ./public /app/public
 
 # Install dependencies
 RUN npm install
