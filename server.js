@@ -8,6 +8,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const path = require("path");
+app.use(express.static(path.join(__dirname, "public")));
+
 // ================= MIDDLEWARE =================
 app.use(cors());
 app.use(bodyParser.json());
@@ -56,5 +59,7 @@ app.post("/login", (req, res) => {
 });
 // ================= SERVER =================
 app.listen(3000, () => {
-    console.log("Server running on http://34.236.189.241:3000/login");
+    console.log("Server running on http://34.236.189.241:3000");
 });
+
+

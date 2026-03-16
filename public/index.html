@@ -20,24 +20,38 @@
             <li><a href="#about">About</a></li>
         </ul>
 
-        <!-- AUTH BUTTONS -->
+    <!-- AUTH BUTTONS -->
         <div class="nav-actions" id="auth-buttons">
-            <button class="login-btn" onclick="openSignup()">Signup</button>
-            <button class="login-btn" onclick="openLogin()">Login</button>
-            <div class="cart" onclick="openCartPage()">
-                🛒 <span id="cart-count">0</span>
+
+            <button class="login-btn" onclick="window.location.href='signup.html'">
+            Signup
+            </button>
+
+            <button class="login-btn" onclick="window.location.href='login.html'">
+            Login
+            </button>
+
+            <div class="cart" onclick="window.location.href='cart.html'">
+            🛒 <span id="cart-count">0</span>
             </div>
+
         </div>
+
 
         <!-- USER INFO -->
         <div class="nav-actions" id="user-info" style="display:none;">
-            <span id="username"></span>
-            <button class="login-btn" onclick="logout()">Logout</button>
-            <div class="cart" onclick="openCartPage()">
-                🛒 <span id="cart-count-user">0</span>
-            </div>
+
+        <span id="username"></span>
+
+        <button class="login-btn" onclick="logout()">
+        Logout
+        </button>
+
+        <div class="cart" onclick="window.location.href='cart.html'">
+        🛒 <span id="cart-count-user">0</span>
         </div>
 
+        </div>
     </nav>
 </header>
 
@@ -46,7 +60,7 @@
     <div class="hero-content">
         <h1>Online Pharmacy Store</h1>
         <p>Buy medicines safely and easily from trusted sources</p>
-        <button class="primary-btn" id="hero-auth-btn" onclick="openSignup()">
+        <button class="login-btn" onclick="window.location.href='signup.html'">
             Get Started
         </button>
 
@@ -152,6 +166,6 @@
     <p>© 2026 Pharma CloudOps. All rights reserved.</p>
 </footer>
 
-<script src="public/script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

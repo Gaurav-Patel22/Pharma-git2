@@ -53,28 +53,24 @@ function updateCartCount() {
 
 // ================= AUTH STATE =================
 window.onload = function () {
+
     const user = JSON.parse(localStorage.getItem("user"));
 
     const authButtons = document.getElementById("auth-buttons");
     const userInfo = document.getElementById("user-info");
-    const heroBtn = document.getElementById("hero-auth-btn");
+    const username = document.getElementById("username");
 
     if (user) {
-        authButtons.style.display = "none";
-        userInfo.style.display = "flex";
-        document.getElementById("username").innerText = "Hi, " + user.name;
 
-        heroBtn.innerText = "Browse Medicines";
-        heroBtn.onclick = () => {
-            document.getElementById("medicines").scrollIntoView({
-                behavior: "smooth"
-            });
-        };
+        if (authButtons) authButtons.style.display = "none";
+        if (userInfo) userInfo.style.display = "flex";
+
+        if (username) username.innerText = "Hi, " + user.name;
+
     } else {
-        authButtons.style.display = "flex";
-        userInfo.style.display = "none";
 
-        heroBtn.innerText = "Get Started";
-        heroBtn.onclick = openSignup;
+        if (authButtons) authButtons.style.display = "flex";
+        if (userInfo) userInfo.style.display = "none";
+
     }
 };
