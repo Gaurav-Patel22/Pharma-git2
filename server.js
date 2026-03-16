@@ -25,18 +25,18 @@ app.get("/", (req, res) => {
 app.post("/signup", (req, res) => {
     const { name, email, password } = req.body;
 
-    // Use 'name' to match your DB column precisely
     const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
 
     db.query(sql, [name, email, password], (err, result) => {
+
         if (err) {
-            // This triggers if the email already exists in the DB
-            return res.json({ success: false, message: "User already exists" });
+            console.log("DB ERROR:", err);
+            return res.json({ success: false, message: err.message });
         }
+
         res.json({ success: true, message: "Signup successful" });
     });
 });
-
 // ================= LOGIN =================
 app.post("/login", (req, res) => {
     const { email, password } = req.body;
