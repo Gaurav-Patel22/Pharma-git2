@@ -55,6 +55,6 @@ app.post("/login", (req, res) => {
     });
 });
 // ================= SERVER =================
-app.listen(5000, () => {
-    console.log("Server running on http://localhost:5000");
+app.listen(3000, () => {
+    console.log("Server running on http://34.236.189.241:3000/");
 });
