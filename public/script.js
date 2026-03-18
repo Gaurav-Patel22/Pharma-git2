@@ -1,3 +1,6 @@
+// ================= BASE URL =================
+const BASE_URL = "http://MASTER_PUBLIC_IP:3000";
+
 // ================= REDIRECTION =================
 function openSignup() { window.location.href = "signup.html"; }
 function openLogin() { window.location.href = "login.html"; }
@@ -8,7 +11,7 @@ function logout() {
     window.location.reload();
 }
 
-// ================= CART =================
+// ================= CART =================/
 let cart = [];
 try {
     cart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -44,7 +47,7 @@ async function signup(event) {
     if (!nameEl || !emailEl || !passEl) return alert("Signup form incomplete");
 
     try {
-        const res = await fetch(`${BASE_URL}/api/signup`, {
+        const res = await fetch(`${BASE_URL}/api/signup`{
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify({ name: nameEl.value, email: emailEl.value, password: passEl.value })
