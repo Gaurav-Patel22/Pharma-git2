@@ -1,5 +1,5 @@
 // ================= BASE URL =================
-const BASE_URL = "http://MASTER_PUBLIC_IP:3000";
+const BASE_URL = "http://34.236.189.241:3000";
 
 // ================= REDIRECTION =================
 function openSignup() { window.location.href = "signup.html"; }
