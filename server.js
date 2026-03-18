@@ -1,65 +1,69 @@
-const express = require ("express");
-const bodyParser = require("body-parser");
+const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const db = require("./db");
 
 const app = express();
-app.use(cors());
+
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-const path = require("path");
-app.use(express.static(path.join(__dirname, "public")));
-
-// ================= MIDDLEWARE =================
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-// ================= TEST ROUTE =================
+// टेस्ट
 app.get("/", (req, res) => {
     res.send("Backend is running 🚀");
 });
 
-// ================= SIGN UP =================
-app.post("/signup", (req, res) => {
+// ================= SIGNUP =================
+app.post("/api/signup", async (req, res) => {
     const { name, email, password } = req.body;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
 
-    db.query(sql, [name, email, password], (err, result) => {
-
+    db.query(sql, [name, email, hashedPassword], (err, result) => {
         if (err) {
-            console.log("DB ERROR:", err);
+            console.log(err);
             return res.json({ success: false, message: err.message });
         }
 
         res.json({ success: true, message: "Signup successful" });
     });
 });
+
 // ================= LOGIN =================
-app.post("/login", (req, res) => {
+app.post("/api/login", (req, res) => {
     const { email, password } = req.body;
 
-    const sql = "SELECT * FROM users WHERE email = ? AND password = ?";
+    const sql = "SELECT * FROM users WHERE email = ?";
 
-    db.query(sql, [email, password], (err, result) => {
-        if (err) return res.json({ success: false, message: "Database error" });
+    db.query(sql, [email], async (err, result) => {
+        if (err) {
+            return res.json({ success: false, message: "Database error" });
+        }
 
         if (result.length > 0) {
-            // result[0].name matches your DB column
-            res.json({ 
-                success: true, 
-                user: { name: result[0].name, email: result[0].email } 
-            });
-        } else {
-            res.json({ success: false, message: "Invalid credentials" });
+            const user = result[0];
+
+            const match = await bcrypt.compare(password, user.password);
+
+            if (match) {
+                return res.json({
+                    success: true,
+                    user: { name: user.name, email: user.email }
+                });
+            }
         }
+
+        res.json({ success: false, message: "Invalid credentials" });
     });
 });
-// ================= SERVER =================
-app.listen(3000, () => {
-    console.log("Server running on http://34.236.189.241:3000");
+
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "OK" });
 });
 
-
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
