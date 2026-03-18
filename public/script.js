@@ -1,6 +1,3 @@
-// ================= BASE URL =================
-const BASE_URL = "http://34.236.189.241:3000";
-
 // ================= REDIRECTION =================
 function openSignup() { window.location.href = "signup.html"; }
 function openLogin() { window.location.href = "login.html"; }
@@ -47,7 +44,7 @@ async function signup(event) {
     if (!nameEl || !emailEl || !passEl) return alert("Signup form incomplete");
 
     try {
-        const res = await fetch(`${BASE_URL}/api/signup`{
+        const res = await fetch(`/api/signup`{
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify({ name: nameEl.value, email: emailEl.value, password: passEl.value })
@@ -65,7 +62,7 @@ async function login(event) {
     if (!emailEl || !passEl) return alert("Login form incomplete");
 
     try {
-        const res = await fetch(`${BASE_URL}/api/login`, {
+        const res = await fetch(`/api/login`, {
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify({ email: emailEl.value, password: passEl.value })
