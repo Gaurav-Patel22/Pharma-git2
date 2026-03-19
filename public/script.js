@@ -38,47 +38,72 @@ function updateCartCount() {
 // ================= AUTH =================
 async function signup(event) {
     event.preventDefault();
+
     const nameEl = document.getElementById("name");
     const emailEl = document.getElementById("email");
     const passEl = document.getElementById("password");
-    if (!nameEl || !emailEl || !passEl) return alert("Signup form incomplete");
+
+    if (!nameEl || !emailEl || !passEl) {
+        return alert("Signup form incomplete");
+    }
 
     try {
-        const res = await fetch("http://34.236.189.241:90/api/login",{
+        const res = await fetch("/api/signup", {
             method: "POST",
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify({ name: nameEl.value, email: emailEl.value, password: passEl.value })
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                name: nameEl.value,
+                email: emailEl.value,
+                password: passEl.value
+            })
         });
+
         const data = await res.json();
         alert(data.message);
-        if (data.success) window.location.href = "login.html";
-    } catch (err) { console.error(err); alert("Signup failed"); }
+
+        if (data.success) {
+            window.location.href = "login.html";
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Signup failed");
+    }
 }
 
 async function login(event) {
     event.preventDefault();
+
     const emailEl = document.getElementById("email");
     const passEl = document.getElementById("password");
-    if (!emailEl || !passEl) return alert("Login form incomplete");
+
+    if (!emailEl || !passEl) {
+        return alert("Login form incomplete");
+    }
 
     try {
-        const res = await fetch(`http://34.236.189.241:90/api/login`, {
+        const res = await fetch("/api/login", {
             method: "POST",
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify({ email: emailEl.value, password: passEl.value })
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                email: emailEl.value,
+                password: passEl.value
+            })
         });
-        const data = await res.json();
+
+        const data = await res.json();  // 🔥 IMPORTANT
+
         if (data.success) {
             localStorage.setItem("user", JSON.stringify(data.user));
-            const authButtons = document.getElementById("auth-buttons");
-            const userInfo = document.getElementById("user-info");
-            const username = document.getElementById("username");
-            if (authButtons) authButtons.style.display = "none";
-            if (userInfo) userInfo.style.display = "flex";
-            if (username) username.innerText = "Hi, " + data.user.name;
             window.location.href = "index.html";
-        } else alert(data.message);
-    } catch (err) { console.error(err); alert("Login failed"); }
+        } else {
+            alert(data.message);
+        }
+
+    } catch (err) {
+        console.error(err);
+        alert("Login failed");
+    }
 }
 
 // ================= AUTH STATE ON LOAD =================
