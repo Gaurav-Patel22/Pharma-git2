@@ -44,7 +44,7 @@ async function signup(event) {
     if (!nameEl || !emailEl || !passEl) return alert("Signup form incomplete");
 
     try {
-        const res = await fetch(`/api/signup`{
+        const res = await fetch("http://34.236.189.241:90/api/login",{
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify({ name: nameEl.value, email: emailEl.value, password: passEl.value })
@@ -62,7 +62,7 @@ async function login(event) {
     if (!emailEl || !passEl) return alert("Login form incomplete");
 
     try {
-        const res = await fetch(`/api/login`, {
+        const res = await fetch(`http://34.236.189.241:90/api/login`, {
             method: "POST",
             headers: {"Content-Type":"application/json"},
             body: JSON.stringify({ email: emailEl.value, password: passEl.value })
