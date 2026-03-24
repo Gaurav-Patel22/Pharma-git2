@@ -773,3 +773,25 @@ header .nav-links a:hover {
 .section-title {
   animation: fadeUp 0.5s ease both;
 }
+
+/* Cart Button Styles */
+.qty-btn {
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.2s ease;
+}
+
+.qty-btn:hover {
+    background-color: #ddd;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000 !important;
+}
+
+.cart-table th, .cart-table td {
+    text-align: center;
+    vertical-align: middle;
+}
